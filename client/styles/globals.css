@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.glass_effect {
+  background: linear-gradient(
+    148.87deg,
+    rgba(255, 255, 255, 0.03) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  backdrop-filter: blur(100px);
+  border: 2px solid rgba(73, 145, 202, 0.3);
+}
+
+.btn_gradient {
+  background: linear-gradient(90deg, #3dc8fb 0%, #8327fe 50.52%, #e912f7 100%);
+  box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
