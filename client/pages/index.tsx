@@ -22,7 +22,7 @@ export default function Home() {
 
   const isWalletConnected = async () => {
     try {
-      const { ethereum } = window
+      const { ethereum }: any = window
 
       //Check if user is logged in
       const accounts = await ethereum.request({ method: 'eth_accounts' })
@@ -56,7 +56,7 @@ export default function Home() {
 
   const connectWallet = async () => {
     try {
-      const { ethereum } = window
+      const { ethereum }: any = window
 
       if (currAccount) {
         toast.warn("You're already connected!")
@@ -81,7 +81,7 @@ export default function Home() {
 
   const buyCoffee = async () => {
     try {
-      const { ethereum } = window
+      const { ethereum }: any = window
 
       if (ethereum) {
         const provider = new ethers.providers.Web3Provider(ethereum)
@@ -149,7 +149,7 @@ export default function Home() {
   //Get all coffee from the contract
   const getAllCoffee = async () => {
     try {
-      const { ethereum } = window
+      const { ethereum }: any = window
       if (ethereum) {
         const provider = new ethers.providers.Web3Provider(ethereum)
         const signer = provider.getSigner()
@@ -189,6 +189,7 @@ export default function Home() {
 
   useEffect(() => {
     let contract: any
+    const { ethereum }: any = window
     getAllCoffee()
     isWalletConnected()
 
@@ -209,8 +210,8 @@ export default function Home() {
       ])
     }
 
-    if (window.ethereum) {
-      const provider = new ethers.providers.Web3Provider(window.ethereum)
+    if (ethereum) {
+      const provider = new ethers.providers.Web3Provider(ethereum)
       const signer = provider.getSigner()
       contract = new ethers.Contract(contractAddress, contractABI, signer)
       contract.on('NewCoffee', onNewCoffe)
@@ -269,7 +270,7 @@ export default function Home() {
               </label>
               <textarea
                 className="form-textarea focus:shadow-outline mt-1 block w-full appearance-none rounded border border-[#3DC8FB] bg-transparent py-2 px-3 leading-tight text-white shadow focus:outline-none"
-                rows="5"
+                rows={5}
                 placeholder="Enter your message"
                 id="message"
                 onChange={handleMessage}
@@ -309,7 +310,7 @@ export default function Home() {
 
       <div className="z-10 flex flex-row flex-wrap space-x-5">
         {allCoffee
-          ? allCoffee.map((coffee, index) => {
+          ? allCoffee.map((coffee: any, index: any) => {
               return (
                 <div
                   key={index}
