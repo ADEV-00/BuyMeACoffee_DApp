@@ -178,20 +178,14 @@ export default function Home() {
       }
     } catch (err: any) {
       console.log(err)
-      toast.error('Something went wrong, please try again later...', {
-        position: 'top-right',
-        autoClose: 5000,
-        hideProgressBar: false,
-        progress: undefined,
-      })
     }
   }
 
   useEffect(() => {
     let contract: any
     const { ethereum }: any = window
-    getAllCoffee()
     isWalletConnected()
+    getAllCoffee()
 
     const onNewCoffe = (
       from: string,
